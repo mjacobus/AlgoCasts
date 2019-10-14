@@ -11,14 +11,13 @@
 function chunk(array, size) {
   const chunks = [];
 
-  array.forEach((element, index) => {
-    if (index % size == 0) {
-      chunks.push([element]);
-      return
-    }
+  let last = size;
+  let index = 0;
 
-    chunks[chunks.length - 1].push(element);
-  });
+  while (index < array.length) {
+    chunks.push(array.slice(index, index + size));
+    index += size;
+  }
 
   return chunks;
 }
