@@ -13,7 +13,8 @@ function chunk(array, size) {
 
   array.forEach((element, index) => {
     if (index % size == 0) {
-      chunks.push([]);
+      chunks.push([element]);
+      return
     }
 
     chunks[chunks.length - 1].push(element);
