@@ -1,0 +1,10 @@
+adapters:
+  jest:
+    adapter: custom
+    file_pattern: ".*test.js"
+    command: "./node_modules/.bin/jest"
+    commands:
+      all: "{command}"
+      file: "{command} {file}"
+      # oops, jest does not really filter by line
+      line: "{command} {file}"
