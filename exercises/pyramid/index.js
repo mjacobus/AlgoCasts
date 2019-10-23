@@ -14,6 +14,13 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n) {
+  let maxLength = n + 1;
+  for (let i = 0; i < n; i++) {
+    let wall = "#".repeat(i * 2 + 1);
+    let offset = " ".repeat(n - 1 - i);
+    console.log(`${offset}${wall}${offset}`);
+  }
+}
 
 module.exports = pyramid;
