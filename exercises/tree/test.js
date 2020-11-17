@@ -29,7 +29,7 @@ describe('Node', () => {
   });
 });
 
-describe.skip('Tree', () => {
+describe('Tree', () => {
   test('starts empty', () => {
     const t = new Tree();
     expect(t.root).toEqual(null);
@@ -50,10 +50,10 @@ describe.skip('Tree', () => {
     expect(letters).toEqual(['a', 'b', 'c', 'd']);
   });
 
-  test('Can traverse DF', () => {
+  test.skip('Can traverse DF', () => {
     const letters = [];
     const t = new Tree();
-    t.root = new Node('a');
+
     t.root.add('b');
     t.root.add('d');
     t.root.children[0].add('c');
