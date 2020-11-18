@@ -38,6 +38,15 @@ class Tree {
       callback(node);
     }
   }
+
+  traverseDF(callback) {
+    const queue = [this.root];
+    while(queue.length > 0) {
+      const node = queue.shift();
+      queue.unshift(...node.children)
+      callback(node);
+    }
+  }
 }
 
 module.exports = { Tree, Node };
