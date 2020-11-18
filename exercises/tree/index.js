@@ -33,9 +33,9 @@ class Tree {
   traverseBF(callback) {
     const queue = [this.root];
     while(queue.length > 0) {
-      const current = queue.shift();
-      current.children.forEach(child => queue.push(child));
-      callback(current);
+      const node = queue.shift();
+      queue.push(...node.children)
+      callback(node);
     }
   }
 }
