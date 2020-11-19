@@ -19,7 +19,6 @@
 // }
 
 function reverse(str) {
-  debugger
   return str
     .split("")
     .reverse()
