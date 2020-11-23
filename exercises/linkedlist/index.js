@@ -15,33 +15,24 @@ class LinkedList {
   }
 
   insertFirst(data) {
+    // this.insertAt(data, 0); // TODO: WHY dos not this work?
     this.head = new Node(data, this.head);
   }
 
   getFirst() {
-    return this.head;
+    return this.getAt(0);
   }
 
   size() {
     let size = 0;
-    let node = this.head;
-
-    while (node) {
+    this.forEach((node) => {
       size += 1;
-      node = node.next;
-    }
+    });
     return size;
   }
 
   getLast() {
-    let node = this.head;
-
-    while (node) {
-      if (!node.next) {
-        return node;
-      }
-      node = node.next;
-    }
+    return this.getAt(this.size() - 1);
   }
 
   clear() {
@@ -49,33 +40,19 @@ class LinkedList {
   }
 
   removeFirst() {
-    if (this.head) {
-      this.head = this.head.next;
-    }
+    this.removeAt(0);
   }
 
   removeLast() {
-    let node = this.head;
-
-    if (node && !this.head.next) {
-      this.head = null;
-      return;
-    }
-
-    while (node) {
-      if (node.next && node.next.next) {
-        node = node.next;
-      } else {
-        node.next = null;
-        return;
-      }
-    }
+    this.removeAt(this.size() - 1);
   }
 
   insertLast(value) {
+    const node = new Node(value);
     const last = this.getLast();
+
     if (last) {
-      last.next = new Node(value);
+      last.next = node;
       return;
     }
 
@@ -126,6 +103,28 @@ class LinkedList {
     const left = this.getAt(index - 1) || this.getLast();
     const right = this.getAt(index);
     left.next = new Node(value, right);
+  }
+
+  forEach(fn) {
+    let node = this.head;
+    let index = 0;
+
+    while (node) {
+      const result = fn(node, index);
+      if (result !== undefined) {
+        return result;
+      }
+      index++;
+      node = node.next;
+    }
+  }
+
+  *[Symbol.iterator]() {
+    let node = this.head;
+    while (node) {
+      yield node;
+      node = node.next;
+    }
   }
 }
 
