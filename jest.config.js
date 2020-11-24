@@ -1,4 +1,4 @@
 module.exports = {
   verbose: false,
-  reporters: ["jest-dot-reporter"],
+  // reporters: ["jest-dot-reporter"],
 };
