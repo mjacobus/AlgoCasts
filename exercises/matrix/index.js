@@ -20,9 +20,6 @@ function matrix(n) {
 
   for (let i = 0; i < n; i++) {
     result.push([]);
-    for (let j = 0; j < n; j++) {
-      result[i][j] = null;
-    }
   }
 
   const x = { value: 0, min: 0, max: n - 1 };
@@ -46,8 +43,9 @@ function matrix(n) {
         direction = "down";
         y.min++;
         y.value++;
-        continue;
       }
+
+      continue;
     }
 
     if (direction == "down") {
@@ -57,8 +55,9 @@ function matrix(n) {
         direction = "left";
         x.value--;
         x.max--;
-        continue;
       }
+
+      continue;
     }
 
     if (direction == "left") {
@@ -68,8 +67,9 @@ function matrix(n) {
         direction = "up";
         y.max--;
         y.value--;
-        continue;
       }
+
+      continue;
     }
 
     if (direction == "up") {
@@ -79,8 +79,9 @@ function matrix(n) {
         direction = "right";
         x.min++;
         x.value++;
-        continue;
       }
+
+      continue;
     }
   }
 
